@@ -11,6 +11,7 @@ dependencies = [
   "snowflake-connector-python",
   "requirements-parser",
   "toml",
+  "pluggy~=1.0",
   "pyyaml",
   "typer",
   "rich"
@@ -20,7 +21,7 @@ dependencies = [
 "Source code" = "https://github.com/Snowflake-Labs/snowcli"
 
 [project.scripts]
-snow = "snowcli.cli:app"
+snow = "snowcli._cli:APP"
 
 [tool.hatch.version]
 path = "src/snowcli/__about__.py"

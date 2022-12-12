@@ -7,13 +7,13 @@ from shutil import copytree
 
 import pkg_resources
 import typer
-from snowcli.cli.snowpark_shared import snowpark_create
-from snowcli.cli.snowpark_shared import snowpark_describe
-from snowcli.cli.snowpark_shared import snowpark_drop
-from snowcli.cli.snowpark_shared import snowpark_execute
-from snowcli.cli.snowpark_shared import snowpark_list
-from snowcli.cli.snowpark_shared import snowpark_package
-from snowcli.cli.snowpark_shared import snowpark_update
+from snowcli._cli.snowpark_shared import snowpark_create
+from snowcli._cli.snowpark_shared import snowpark_describe
+from snowcli._cli.snowpark_shared import snowpark_drop
+from snowcli._cli.snowpark_shared import snowpark_execute
+from snowcli._cli.snowpark_shared import snowpark_list
+from snowcli._cli.snowpark_shared import snowpark_package
+from snowcli._cli.snowpark_shared import snowpark_update
 from snowcli.utils import conf_callback
 
 app = typer.Typer(context_settings={"help_option_names": ["-h", "--help"]})
