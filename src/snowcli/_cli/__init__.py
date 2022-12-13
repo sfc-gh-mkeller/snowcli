@@ -3,29 +3,21 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-import pluggy
 import typer
 from rich import print
 
 from . import connection
 from . import function
+from . import plugin
 from . import procedure
 from . import stage
 from . import streamlit
 from . import warehouse
 from .. import __about__
 from ..config import AppConfig
-from ..plugin import hookspecs
 from ..plugin import NAME
+from ..plugin import pm
 from ..snowsql_config import SnowsqlConfig
-
-
-def get_pm() -> pluggy.PluginManager:
-    pm = pluggy.PluginManager(NAME)
-    pm.add_hookspecs(hookspecs)
-    pm.load_setuptools_entrypoints(NAME)
-    list(pm.hook.snowcli_add_option(app=APP))
-    return pm
 
 
 def version_callback(value: bool):
@@ -35,7 +27,9 @@ def version_callback(value: bool):
 
 
 APP = typer.Typer(context_settings={"help_option_names": ["-h", "--help"]})
-PM = get_pm()
+# Load up CLI plugins
+pm.load_setuptools_entrypoints(NAME)
+pm.hook.snowcli_add_option(app=APP)
 
 
 @APP.command()
@@ -143,6 +137,7 @@ APP.add_typer(streamlit.app, name="streamlit")
 APP.add_typer(connection.app, name="connection")
 APP.add_typer(warehouse.app, name="warehouse")
 APP.add_typer(stage.app, name="stage")
+APP.add_typer(plugin.app, name="plugin")
 
 if __name__ == '__main__':
     APP()
