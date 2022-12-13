@@ -122,8 +122,11 @@ def configure(
 @APP.callback()
 def default(
     version: bool = typer.Option(
-        None, "--version",
-        callback=version_callback, is_eager=True,
+        None,
+        "-v", "--version",
+        help="Show verison and exit.",
+        callback=version_callback,
+        is_eager=True,
     ),
 ) -> None:
     """
