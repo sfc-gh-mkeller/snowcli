@@ -3,7 +3,6 @@ from __future__ import annotations
 import logging
 import subprocess
 import sys
-from operator import itemgetter
 from typing import Sequence
 
 import typer
@@ -116,7 +115,7 @@ def remove_plugin(plugin_name: str) -> None:
     """
     Remove a plugin
     """
-    plugins = list(map(itemgetter(0), pm.list_plugin_distinfo()))
+    plugins = list(map(lambda e: e[1].project_name, pm.list_plugin_distinfo()))
     if plugin_name not in plugins:
         exit_with_error(
             f"'{plugin_name}' does not seem to installed",
