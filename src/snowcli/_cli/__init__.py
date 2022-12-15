@@ -7,12 +7,7 @@ import typer
 from rich import print
 
 from . import connection
-from . import function
 from . import plugin
-from . import procedure
-from . import stage
-from . import streamlit
-from . import warehouse
 from .. import __about__
 from ..config import AppConfig
 from ..plugin import NAME
@@ -134,12 +129,7 @@ def default(
     """
 
 
-APP.add_typer(function.app, name="function")
-APP.add_typer(procedure.app, name="procedure")
-APP.add_typer(streamlit.app, name="streamlit")
 APP.add_typer(connection.app, name="connection")
-APP.add_typer(warehouse.app, name="warehouse")
-APP.add_typer(stage.app, name="stage")
 APP.add_typer(plugin.app, name="plugin")
 
 if __name__ == '__main__':
