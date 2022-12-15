@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 app = typer.Typer(
     context_settings={"help_option_names": ["-h", "--help"]},
-    help="Plugin related actions",
+    help="Plugin related actions.",
 )
 
 
